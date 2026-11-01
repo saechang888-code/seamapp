@@ -23,6 +23,7 @@
     phone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
     share: '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',
     book: '<path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6v14"/>',
+    gift: '<rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M3 9h18M12 9v11M12 9c-2-4-6-4-6-1.5S10 9 12 9zM12 9c2-4 6-4 6-1.5S14 9 12 9z"/>',
     next: '<path d="M9 5l7 7-7 7"/>', ext: '<path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/>', search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>'
   };
   const ico = (n, color, size) => `<svg class="icon" width="${size || 22}" height="${size || 22}" viewBox="0 0 24 24" fill="none" stroke="${color || 'currentColor'}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[n]}</svg>`;
@@ -42,10 +43,11 @@
       <div class="hero"><img src="images/hero.jpg" alt="">
         <div class="cap"><span style="display:flex;align-items:center;gap:10px"><img src="images/logo.png" alt="" width="40" height="40" style="border-radius:10px;background:#fff;padding:3px"><span class="serif" style="font-size:24px;font-weight:700">${esc(c.name)}</span></span>
           <span style="font-size:13px;opacity:.9">${esc(c.motto)}</span></div></div>
-      <div class="grid4">
+      <div class="grid4" style="grid-template-columns:repeat(5,minmax(0,1fr));gap:6px">
         <a class="quick" href="#/worship"><span class="ic">${ico('clock', '#1F3A78', 20)}</span>예배 시간</a>
         <a class="quick" href="#/worship"><span class="ic">${ico('pin', '#1F3A78', 20)}</span>오시는 길</a>
         <a class="quick" href="tel:${c.phone.replace(/-/g, '')}"><span class="ic">${ico('phone', '#1F3A78', 20)}</span>전화하기</a>
+        <a class="quick" href="#/give"><span class="ic">${ico('gift', '#1F3A78', 20)}</span>헌금</a>
         <button class="quick" data-invite style="font-family:inherit"><span class="ic">${ico('share', '#1F3A78', 20)}</span>초대하기</button>
       </div>
       ${s ? `<section style="display:flex;flex-direction:column;gap:10px">
@@ -99,6 +101,22 @@
     </main>${tabbar('worship')}`;
   }
 
+  // ---------- 헌금 안내 (계좌 이체) ----------
+  function offeringCard() {
+    const o = D.church && D.church.offering; if (!o) return '';
+    return `<section id="offering" class="card" style="display:flex;flex-direction:column;gap:12px;background:var(--navy-deep);border-color:var(--navy-deep);color:#fff">
+      <span class="eyebrow" style="color:#E9C97A">OFFERING</span>
+      <b class="serif" style="font-size:19px">헌금 안내</b>
+      <span style="font-size:13px;opacity:.85;line-height:1.6">각각 그 마음에 정한 대로 할 것이요 인색함으로나 억지로 하지 말지니 하나님은 즐겨 내는 자를 사랑하시느니라 (고후 9:7)</span>
+      <div style="display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:14px;background:rgba(255,255,255,.1)">
+        <span style="font-size:13px;opacity:.85">${esc(o.bank)}</span>
+        <span class="serif" style="font-size:22px;font-weight:700;letter-spacing:.02em">${esc(o.account)}</span>
+        <span style="font-size:13px;opacity:.85">예금주 ${esc(o.holder)}</span>
+      </div>
+      <button class="btn" data-copyacc style="background:#E9C97A;color:var(--navy-deep)">계좌번호 복사</button>
+    </section>`;
+  }
+
   // ---------- 함께하기: 기도 요청 · 새가족 · 문의 ----------
   const CARDS = [['prayer', '기도 요청', '함께 기도할 제목을 나눠 주세요.'], ['newcomer', '새가족 등록', '처음 오셨나요? 반갑습니다. 알려 주시면 연락드릴게요.'], ['ask', '궁금한 점', '교회에 묻고 싶은 것을 적어 주세요.']];
   function viewTogether() {
@@ -114,6 +132,7 @@
         <button class="btn btn-navy" data-send>교회에 보내기</button>
         <span class="muted" style="font-size:12px;line-height:1.6">'교회에 보내기'를 누르면 문자·카카오톡 보내기 창이 열려요. 받는 사람에 교회(${esc(D.church ? D.church.phone : '')})나 담당 사역자를 고르시면 됩니다. 곧 앱 안에서 교회로 바로 전해지도록 바꿀 예정이에요.</span>
       </div>
+      ${offeringCard()}
       <div class="card" style="display:flex;gap:14px;align-items:center">${ico('share', '#1F3A78', 26)}<span style="flex:1;display:flex;flex-direction:column;gap:3px"><b style="color:var(--navy-deep)">친구·가족 초대하기</b><span class="muted" style="font-size:12px">새암교회 앱을 소중한 사람에게 보내 보세요.</span></span><button class="chip on" data-invite>보내기</button></div>
     </main>${tabbar('together')}`;
   }
@@ -163,12 +182,17 @@
   // ---------- 길 찾기 ----------
   function route() {
     const a = location.hash.replace(/^#\/?/, '').split('/')[0];
-    $app.innerHTML = a === 'sermons' ? viewSermons() : a === 'worship' ? viewWorship() : a === 'together' ? viewTogether() : a === 'about' ? viewAbout() : viewHome();
+    $app.innerHTML = a === 'give' ? `<main><div style="display:flex;flex-direction:column;gap:4px"><span class="eyebrow">OFFERING</span><h1>헌금</h1></div>${offeringCard()}</main>${tabbar('together')}` : a === 'sermons' ? viewSermons() : a === 'worship' ? viewWorship() : a === 'together' ? viewTogether() : a === 'about' ? viewAbout() : viewHome();
     window.scrollTo(0, 0);
   }
   document.addEventListener('click', e => {
-    const el = e.target.closest('[data-play],[data-cur],[data-card],[data-invite],[data-send]');
+    const el = e.target.closest('[data-play],[data-cur],[data-card],[data-invite],[data-send],[data-copyacc]');
     if (!el) return;
+    if (el.hasAttribute('data-copyacc')) {
+      const o = D.church.offering, txt = `${o.bank} ${o.account} ${o.holder}`;
+      (navigator.clipboard ? navigator.clipboard.writeText(o.account) : Promise.reject()).then(() => toast('계좌번호를 복사했어요')).catch(() => toast(txt));
+      return;
+    }
     if (el.dataset.play) { play(document.getElementById(el.dataset.box), el.dataset.play); return; }
     if (el.dataset.cur) { e.preventDefault(); store.set('cur', el.dataset.cur); route(); return; }
     if (el.dataset.card) { store.set('card', el.dataset.card); route(); return; }
