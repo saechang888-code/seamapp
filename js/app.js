@@ -142,6 +142,14 @@
     const c = D.church; if (!c) return `<main></main>${tabbar('about')}`;
     return `<main>
       <div style="display:flex;flex-direction:column;gap:4px"><span class="eyebrow">ABOUT</span><h1>교회 소개</h1><span class="muted" style="font-size:13px">${esc(c.denom)} ${esc(c.name)}</span></div>
+      ${c.meaning ? `<section style="display:flex;flex-direction:column;gap:12px;padding:22px 20px;border-radius:20px;background:var(--navy-deep);color:#fff">
+        <span class="eyebrow" style="color:#E9C97A">OUR NAME</span>
+        <span class="serif" style="font-size:22px;font-weight:700;line-height:1.4">SEAM, 새암<br><span style="font-size:15px;font-weight:400;opacity:.85">이름에 담긴 뜻</span></span>
+        ${c.meaning.map(m => `<div style="display:flex;flex-direction:column;gap:6px;padding-top:12px;border-top:1px solid rgba(255,255,255,.15)">
+          <b style="color:#E9C97A;font-size:14px;letter-spacing:.04em">${esc(m.word)}</b>
+          <p style="margin:0;font-size:14.5px;line-height:1.85;opacity:.95">${esc(m.text)}</p>
+          ${m.verse ? `<p class="serif" style="margin:4px 0 0;font-size:13.5px;line-height:1.75;color:#E9C97A">${esc(m.verse)}</p>` : ''}</div>`).join('')}
+      </section>` : ''}
       <section class="card" style="display:flex;flex-direction:column;gap:14px">
         <div style="display:flex;gap:14px;align-items:center"><img src="images/pastor.jpg" alt="이재선 담임목사" width="72" height="88" style="border-radius:12px;object-fit:cover;width:72px;height:88px">
           <span style="display:flex;flex-direction:column;gap:4px"><span class="eyebrow">GREETING</span><b class="serif" style="font-size:18px;color:var(--navy-deep)">이재선 목사</b><span class="muted" style="font-size:12px">새암교회 담임목사</span></span></div>
