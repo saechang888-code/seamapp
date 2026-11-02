@@ -128,3 +128,30 @@ input[type=text],input[type=tel],textarea{border-color:rgba(31,90,62,.22);backgr
 /* 단추: 짙은 녹에서 연녹으로 (2026-11-02) */
 .btn-navy,.btn-line{background:linear-gradient(90deg,#0F3324 0%,#1F5A3E 45%,#3E9A68 100%)!important;border:0!important;color:#fff!important;box-shadow:0 4px 12px rgba(18,56,42,.25),inset 0 1px 0 rgba(255,255,255,.25)}
 .btn-navy svg,.btn-line svg{stroke:#fff!important}
+
+/* 연한 펄 초록 (주인님 2026-11-02: 짙은 녹은 촌스러우니 더 연하게, 펄 + 그라데이션) */
+:root{
+  --pearl-dark:linear-gradient(135deg,#9AD1AF 0%,#C2E6CF 38%,#E8F6EE 62%,#B9E1C8 100%);
+  --pearl-mid:linear-gradient(135deg,#7CC49A 0%,#A9DCBC 50%,#D3EEDD 100%);
+  --g-ink:#123D2B;
+}
+.pearl-dark,.leaf-card,.card-band{background:var(--pearl-dark)!important;box-shadow:0 8px 22px rgba(46,118,86,.18),inset 0 1px 0 rgba(255,255,255,.7)}
+.pearl-dark,.pearl-dark *,.leaf-card,.leaf-card *,.card-band{color:var(--g-ink)!important}
+.pearl-dark svg,.card-band svg{stroke:var(--g-ink)!important}
+.pearl-dark .eyebrow,.pearl-dark [style*="E9C97A"]:not(button){color:#7A5A12!important}
+.leaf-card .serif{color:#2E7656!important}
+.leaf-card .muted{color:#2F5A44!important}
+.pearl-dark [style*="rgba(255,255,255,.1)"]{background:rgba(255,255,255,.55)!important}
+.pearl-dark [style*="rgba(255,255,255,.15)"]{border-color:rgba(18,61,43,.15)!important}
+.btn-navy,.btn-line,.chip.on{background:linear-gradient(90deg,#6DBB8D 0%,#97D2AE 50%,#CBEAD7 100%)!important;color:var(--g-ink)!important;box-shadow:0 4px 12px rgba(46,118,86,.2),inset 0 1px 0 rgba(255,255,255,.6)}
+.btn-navy svg,.btn-line svg{stroke:var(--g-ink)!important}
+.gi,.quick span.ic,.leaf-card .gi{background:linear-gradient(135deg,#8ED0A8 0%,#5FB37F 100%)!important}
+.tabbar a .ti{background:linear-gradient(135deg,#A9DCBC,#7CC49A)}
+.tabbar a.on .ti{background:linear-gradient(135deg,#7CC49A 0%,#4FA875 100%)}
+.green-head .list .row{background:linear-gradient(135deg,#F2FAF5 0%,#DDF1E5 100%)}
+.green-head .list .row .tpill{background:linear-gradient(90deg,#7CC49A,#B5E0C6);color:var(--g-ink)}
+.badge{background:linear-gradient(90deg,#9AD1AF,#D3EEDD);color:var(--g-ink)}
+.hero{background:linear-gradient(160deg,#7CC49A,#2E7656)}
+.hero::after{background:linear-gradient(180deg,rgba(124,196,154,.15),rgba(30,84,58,.82))}
+.video{box-shadow:0 0 0 3px #D6EFDF,0 10px 24px rgba(46,118,86,.18)}
+:root{--navy:#5FB37F}
