@@ -173,3 +173,21 @@ body,.app{background:linear-gradient(180deg,#F4FAF6 0%,#E4F1E8 100%);background-
 .badge{background:linear-gradient(90deg,#B4DFC4 0%,#E6F5EC 100%)}
 .hero{background:linear-gradient(180deg,#8CCBA5 0%,#2E7656 100%)}
 .hero::after{background:linear-gradient(180deg,rgba(124,196,154,.1) 0%,rgba(30,84,58,.8) 100%)}
+
+/* 중간 진하기 + 진주빛 (주인님 2026-11-02): 한 방향 그라데이션 위에 진주처럼 은은한 윤기(위쪽 흰 광택 + 모서리의 연보랏빛)를 고정으로 얹는다 */
+:root{
+  --sheen:radial-gradient(130% 90% at 12% 0%,rgba(255,255,255,.6) 0%,rgba(255,255,255,0) 48%),linear-gradient(160deg,rgba(236,226,248,0) 55%,rgba(232,222,246,.38) 100%);
+  --pearl:var(--sheen),linear-gradient(160deg,#FFFFFF 0%,#E3F2E9 100%);
+  --pearl-dark:var(--sheen),linear-gradient(160deg,#8CCBA5 0%,#DDF1E5 100%);
+  --leaf:var(--sheen),linear-gradient(160deg,#B2DEC2 0%,#86C9A1 100%);
+}
+.card,.quick,.chip:not(.on),.tabbar{background:var(--pearl)!important}
+.pearl-dark,.leaf-card,.card-band{background:var(--pearl-dark)!important}
+.btn-navy,.btn-line,.chip.on{background:radial-gradient(120% 140% at 20% 0%,rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 50%),linear-gradient(90deg,#74C092 0%,#CDEBD8 100%)!important}
+.gi,.quick span.ic,.leaf-card .gi{background:radial-gradient(100% 100% at 30% 15%,rgba(255,255,255,.45) 0%,rgba(255,255,255,0) 55%),linear-gradient(160deg,#7CC49A 0%,#3E9A68 100%)!important}
+.tabbar a .ti{background:radial-gradient(100% 100% at 30% 15%,rgba(255,255,255,.45) 0%,rgba(255,255,255,0) 55%),linear-gradient(160deg,#95D3AE 0%,#5FB37F 100%)}
+.tabbar a.on .ti{background:radial-gradient(100% 100% at 30% 15%,rgba(255,255,255,.45) 0%,rgba(255,255,255,0) 55%),linear-gradient(160deg,#6DBB8D 0%,#3E9A68 100%)}
+.green-head .list .row{background:var(--sheen),linear-gradient(90deg,#CFEBD9 0%,#F1F9F4 100%)}
+.green-head .list .row .tpill{background:linear-gradient(90deg,#86C9A1 0%,#C9E9D5 100%)}
+.badge{background:linear-gradient(90deg,#8CCBA5 0%,#DDF1E5 100%)}
+body,.app{background:linear-gradient(180deg,#EFF8F2 0%,#DCEFE3 100%);background-attachment:fixed}
