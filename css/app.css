@@ -206,3 +206,18 @@ body,.app{background:linear-gradient(180deg,#EFF8F2 0%,#DCEFE3 100%);background-
 .green-head .list .row .tpill{background:linear-gradient(90deg,#96D1AD 0%,#CEEBD9 100%)}
 .badge{background:linear-gradient(90deg,#A0D5B4 0%,#E5F4EB 100%)}
 body,.app{background:linear-gradient(180deg,#F1F9F4 0%,#E0F0E5 100%);background-attachment:fixed}
+
+/* 한 단계 더 진하게 (주인님 2026-11-02) */
+:root{
+  --pearl:var(--sheen),linear-gradient(160deg,#FFFFFF 0%,#E1F1E7 100%);
+  --pearl-dark:var(--sheen),linear-gradient(160deg,#88C9A2 0%,#DAF0E2 100%);
+  --leaf:var(--sheen),linear-gradient(160deg,#AEDCBF 0%,#82C79D 100%);
+}
+.btn-navy,.btn-line,.chip.on{background:radial-gradient(120% 140% at 20% 0%,rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 50%),linear-gradient(90deg,#70BE90 0%,#C9E9D5 100%)!important}
+.gi,.quick span.ic,.leaf-card .gi{background:radial-gradient(100% 100% at 30% 15%,rgba(255,255,255,.45) 0%,rgba(255,255,255,0) 55%),linear-gradient(160deg,#78C297 0%,#3A9664 100%)!important}
+.tabbar a .ti{background:radial-gradient(100% 100% at 30% 15%,rgba(255,255,255,.45) 0%,rgba(255,255,255,0) 55%),linear-gradient(160deg,#90D0AA 0%,#5AB07C 100%)}
+.tabbar a.on .ti{background:radial-gradient(100% 100% at 30% 15%,rgba(255,255,255,.45) 0%,rgba(255,255,255,0) 55%),linear-gradient(160deg,#68B98A 0%,#3A9664 100%)}
+.green-head .list .row{background:var(--sheen),linear-gradient(90deg,#CBE9D6 0%,#EFF8F3 100%)}
+.green-head .list .row .tpill{background:linear-gradient(90deg,#82C79D 0%,#C5E7D1 100%)}
+.badge{background:linear-gradient(90deg,#88C9A2 0%,#DAF0E2 100%)}
+body,.app{background:linear-gradient(180deg,#EEF7F1 0%,#D9EDE0 100%);background-attachment:fixed}
