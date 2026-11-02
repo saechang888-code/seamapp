@@ -29,7 +29,7 @@
   const ico = (n, color, size) => `<svg class="icon" width="${size || 22}" height="${size || 22}" viewBox="0 0 24 24" fill="none" stroke="${color || 'currentColor'}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[n]}</svg>`;
   function tabbar(on) {
     const t = [['home', '홈', 'home'], ['sermons', '설교', 'play'], ['worship', '예배', 'clock'], ['together', '함께', 'hands'], ['about', '교회', 'church']];
-    return `<nav class="tabbar" aria-label="주 메뉴">${t.map(([r, n, i]) => `<a href="#/${r}" class="${on === r ? 'on' : ''}"${on === r ? ' aria-current="page"' : ''}>${ico(i)}${n}</a>`).join('')}</nav>`;
+    return `<nav class="tabbar" aria-label="주 메뉴">${t.map(([r, n, i]) => `<a href="#/${r}" class="${on === r ? 'on' : ''}"${on === r ? ' aria-current="page"' : ''}><span class="ti">${ico(i, '#FFFFFF', 18)}</span>${n}</a>`).join('')}</nav>`;
   }
   const videoBox = (s, id, badge) => `<div class="video" id="${id}">${badge ? `<span class="badge">${badge}</span>` : ''}<img src="${yt(s.video)}" alt="">
       <button class="play" data-play="${esc(s.video)}" data-box="${id}" aria-label="${esc(s.title)} 영상 재생"><span>${ico('play', '#fff', 22)}</span></button></div>`;
@@ -44,11 +44,11 @@
         <div class="cap"><span style="display:flex;align-items:center;gap:10px"><img src="images/logo.png" alt="" width="40" height="40" style="border-radius:10px;background:#fff;padding:3px"><span class="serif" style="font-size:24px;font-weight:700">${esc(c.name)}</span></span>
           <span style="font-size:13px;opacity:.9">${esc(c.motto)}</span></div></div>
       <div class="grid4" style="grid-template-columns:repeat(5,minmax(0,1fr));gap:6px">
-        <a class="quick" href="#/worship"><span class="ic">${ico('clock', '#1F5A3E', 20)}</span>예배 시간</a>
-        <a class="quick" href="#/worship"><span class="ic">${ico('pin', '#1F5A3E', 20)}</span>오시는 길</a>
-        <a class="quick" href="tel:${c.phone.replace(/-/g, '')}"><span class="ic">${ico('phone', '#1F5A3E', 20)}</span>전화하기</a>
-        <a class="quick" href="#/give"><span class="ic">${ico('gift', '#1F5A3E', 20)}</span>헌금</a>
-        <button class="quick" data-invite style="font-family:inherit"><span class="ic">${ico('share', '#1F5A3E', 20)}</span>초대하기</button>
+        <a class="quick" href="#/worship"><span class="ic">${ico('clock', '#FFFFFF', 20)}</span>예배 시간</a>
+        <a class="quick" href="#/worship"><span class="ic">${ico('pin', '#FFFFFF', 20)}</span>오시는 길</a>
+        <a class="quick" href="tel:${c.phone.replace(/-/g, '')}"><span class="ic">${ico('phone', '#FFFFFF', 20)}</span>전화하기</a>
+        <a class="quick" href="#/give"><span class="ic">${ico('gift', '#FFFFFF', 20)}</span>헌금</a>
+        <button class="quick" data-invite style="font-family:inherit"><span class="ic">${ico('share', '#FFFFFF', 20)}</span>초대하기</button>
       </div>
       ${s ? `<section style="display:flex;flex-direction:column;gap:10px">
         <div style="display:flex;justify-content:space-between;align-items:baseline"><h2>이주의 설교</h2><a href="#/sermons" class="muted" style="font-size:13px">지난 설교 ›</a></div>

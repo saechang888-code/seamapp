@@ -91,3 +91,12 @@ h2::before{content:"";width:6px;height:18px;border-radius:3px;background:linear-
 input[type=text],input[type=tel],textarea{border-color:rgba(31,90,62,.22);background:#FBFEFC}
 .hero{background:linear-gradient(160deg,#2E7656,#0F3324)}
 .hero>img{opacity:.55;mix-blend-mode:luminosity}
+
+/* 초록 아이콘 (주인님 2026-11-02): 빠른 단추·아래 메뉴 아이콘을 초록 원 안의 흰 아이콘으로 */
+.quick span.ic{background:linear-gradient(135deg,#4FA875 0%,#2E7656 50%,#1F5A3E 100%);box-shadow:0 3px 8px rgba(31,90,62,.3),inset 0 1px 0 rgba(255,255,255,.35)}
+.tabbar{background:var(--pearl);box-shadow:0 -6px 20px rgba(18,56,42,.12);border-top:1px solid rgba(31,90,62,.12)}
+.tabbar a{color:#3F6B53;gap:3px;padding:6px 0}
+.tabbar a .ti{width:34px;height:34px;border-radius:17px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#7FBF97,#4E9A6E);box-shadow:0 2px 5px rgba(31,90,62,.2)}
+.tabbar a.on{color:#174A33}
+.tabbar a.on .ti{background:linear-gradient(135deg,#4FA875 0%,#2E7656 50%,#1F5A3E 100%);box-shadow:0 0 0 3px #F2D58A,0 3px 8px rgba(31,90,62,.35)}
+.tabbar a .ti svg{stroke:#FFFFFF}
