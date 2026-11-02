@@ -293,3 +293,41 @@ body,.app{background:linear-gradient(180deg,#F1F8F2 0%,#E1EFE6 100%);background-
 .badge{background:linear-gradient(90deg,#1A4D36 0%,#3E8F66 100%);color:#FFFFFF}
 .hero::after{background:linear-gradient(180deg,rgba(46,118,86,.15) 0%,rgba(18,56,42,.85) 100%)}
 .video{box-shadow:0 0 0 3px #CFE7D7,0 10px 24px rgba(18,56,42,.18)}
+
+/* 라이프처치처럼 단정하게 (주인님 2026-11-02): 흰 바탕·큰 사진·굵은 제목·넉넉한 여백, 초록은 포인트에만 */
+body,.app{background:#FFFFFF!important}
+main{gap:30px;padding-top:24px}
+h1{font-family:var(--sans);font-weight:800;font-size:30px;letter-spacing:-.02em;color:#111!important}
+h2{font-family:var(--sans);font-weight:800;font-size:21px;letter-spacing:-.01em;color:#111!important}
+h2::before{width:4px;height:20px;background:#2E7656}
+.eyebrow{color:#2E7656!important;letter-spacing:.18em}
+.muted{color:#5F6670}
+.card,.quick,.chip:not(.on),.tabbar{background:#FFFFFF!important}
+.card,.quick{border:1px solid #ECEEEC!important;box-shadow:none!important;border-radius:16px}
+.leaf-card{background:#FFFFFF!important;border:1px solid #ECEEEC!important;box-shadow:none!important}
+.leaf-card,.leaf-card *{color:#111!important}
+.leaf-card .serif{color:#2E7656!important;font-family:var(--sans);font-weight:800}
+.leaf-card .muted{color:#5F6670!important}
+.leaf-card .gi{background:#2E7656!important}
+.green-head .list .row{background:#FFFFFF!important;border-radius:0;margin:0;padding:14px 0;border-bottom:1px solid #EEF0EE}
+.green-head .list .row:first-child{margin-top:4px}
+.green-head .list .row:last-child{border-bottom:0}
+.green-head .list .row .tpill{background:none!important;color:#2E7656!important;padding:0;font-size:14px}
+.gi{background:#2E7656!important;box-shadow:none!important}
+.quick{padding:14px 2px}
+.quick span.ic{background:#2E7656!important;box-shadow:none!important}
+.video{border-radius:14px;box-shadow:none!important}
+.tabbar{border-top:1px solid #ECEEEC!important;box-shadow:none!important}
+.tabbar a .ti{background:#9CCFB0!important;box-shadow:none!important}
+.tabbar a.on .ti{background:#2E7656!important;box-shadow:0 0 0 3px #E2EFE6!important}
+.tabbar a.on{color:#111}
+.chip:not(.on){border-color:#E1E4E1!important;color:#333!important}
+/* 첫 화면: 화면을 가득 채우는 큰 교회 사진 */
+.hero-big{height:440px;margin:-24px -20px 0;border-radius:0}
+.hero-big>img{opacity:1!important;mix-blend-mode:normal!important}
+.hero-big::after{background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.72) 100%)!important}
+.hero-big .cap{gap:8px;bottom:26px}
+.hero-eyebrow{font-size:11px;letter-spacing:.3em;color:#CFE9D8;font-weight:700}
+.hero-title{font-size:38px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.hero-sub{font-size:14px;opacity:.9}
+.hero-btn{align-self:flex-start;margin-top:8px;display:flex;align-items:center;gap:8px;height:46px;padding:0 20px;border:0;border-radius:23px;background:#FFFFFF;color:#12382A;font-size:15px;font-weight:700;font-family:var(--sans)}

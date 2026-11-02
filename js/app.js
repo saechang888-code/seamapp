@@ -40,9 +40,11 @@
     if (!c) return `<main><p class="muted">불러오는 중입니다…</p></main>${tabbar('home')}`;
     const ev = c.events.filter(e => e.date >= new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10));
     return `<main>
-      <div class="hero"><img src="images/hero.jpg" alt="">
-        <div class="cap"><span style="display:flex;align-items:center;gap:10px"><img src="images/logo.png" alt="" width="40" height="40" style="border-radius:10px;background:#fff;padding:3px"><span class="serif" style="font-size:24px;font-weight:700">${esc(c.name)}</span></span>
-          <span style="font-size:13px;opacity:.9">${esc(c.motto)}</span></div></div>
+      <div class="hero hero-big"><img src="images/vision-center.jpg" alt="새암교회 비전센터">
+        <div class="cap"><span class="hero-eyebrow">SEAM CHURCH</span>
+          <span class="hero-title">${esc(c.name)}</span>
+          <span class="hero-sub">${esc(c.motto)}</span>
+          ${s ? `<button class="hero-btn" data-play="${esc(s.video)}" data-box="hbox">${ico('play', '#12382A', 16)}이번 주 설교 보기</button>` : ''}</div></div>
       <div class="grid4" style="grid-template-columns:repeat(5,minmax(0,1fr));gap:6px">
         <a class="quick" href="#/worship"><span class="ic">${ico('clock', '#FFFFFF', 20)}</span>예배 시간</a>
         <a class="quick" href="#/worship"><span class="ic">${ico('pin', '#FFFFFF', 20)}</span>오시는 길</a>
@@ -201,7 +203,7 @@
       (navigator.clipboard ? navigator.clipboard.writeText(o.account) : Promise.reject()).then(() => toast('계좌번호를 복사했어요')).catch(() => toast(txt));
       return;
     }
-    if (el.dataset.play) { play(document.getElementById(el.dataset.box), el.dataset.play); return; }
+    if (el.dataset.play) { const b = document.getElementById(el.dataset.box); play(b, el.dataset.play); b.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     if (el.dataset.cur) { e.preventDefault(); store.set('cur', el.dataset.cur); route(); return; }
     if (el.dataset.card) { store.set('card', el.dataset.card); route(); return; }
     if (el.hasAttribute('data-invite')) { invite(); return; }
