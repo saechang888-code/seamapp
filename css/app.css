@@ -253,3 +253,24 @@ body,.app{background:linear-gradient(180deg,#E8F3EB 0%,#CBE7D6 100%);background-
 .green-head .list .row .tpill{background:linear-gradient(90deg,#329F5D 0%,#A1D7B3 100%);color:var(--g-ink)}
 .badge{background:linear-gradient(90deg,#28995A 0%,#AEE0BE 100%);color:var(--g-ink)}
 body,.app{background:linear-gradient(180deg,#E2EFE5 0%,#BDE1CC 100%);background-attachment:fixed}
+
+/* 아주 진했던 숲빛(#0F3324~#2E7656)과 바로 전 색(#28995A~#AEE0BE)의 가운데 (주인님 2026-11-02) — 짙은 바탕이라 글씨는 흰색, 진주빛 윤기는 은은하게 */
+:root{
+  --sheen-d:radial-gradient(130% 90% at 12% 0%,rgba(255,255,255,.28) 0%,rgba(255,255,255,0) 48%),linear-gradient(160deg,rgba(236,226,248,0) 55%,rgba(232,222,246,.18) 100%);
+  --pearl-dark:var(--sheen-d),linear-gradient(160deg,#1B663F 0%,#6EAB8A 100%);
+}
+.pearl-dark,.leaf-card,.card-band{background:var(--pearl-dark)!important}
+.pearl-dark,.pearl-dark *,.leaf-card,.leaf-card *,.card-band{color:#FFFFFF!important}
+.pearl-dark svg,.card-band svg{stroke:#FFFFFF!important}
+.pearl-dark .eyebrow,.pearl-dark [style*="E9C97A"]:not(button){color:#F2D58A!important}
+.leaf-card .serif{color:#F2D58A!important}
+.leaf-card .muted{color:#E3F2E8!important}
+.pearl-dark [style*="rgba(255,255,255,.1)"]{background:rgba(255,255,255,.14)!important}
+.pearl-dark [style*="rgba(255,255,255,.15)"]{border-color:rgba(255,255,255,.22)!important}
+.pearl-dark button[data-copyacc]{color:#0B2E1F!important}
+.btn-navy,.btn-line,.chip.on{background:radial-gradient(120% 140% at 20% 0%,rgba(255,255,255,.25) 0%,rgba(255,255,255,0) 50%),linear-gradient(90deg,#256C48 0%,#73B990 100%)!important;color:#FFFFFF!important}
+.btn-navy svg,.btn-line svg{stroke:#FFFFFF!important}
+.green-head .list .row .tpill{background:linear-gradient(90deg,#2C8A5A 0%,#609877 100%);color:#FFFFFF}
+.badge{background:linear-gradient(90deg,#1B663F 0%,#4E9472 100%);color:#FFFFFF}
+:root{--pearl-dark:var(--sheen-d),linear-gradient(160deg,#1B663F 0%,#5A9C79 100%)}
+.pearl-dark,.leaf-card,.card-band{background:var(--pearl-dark)!important}
