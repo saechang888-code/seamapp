@@ -111,3 +111,16 @@ input[type=text],input[type=tel],textarea{border-color:rgba(31,90,62,.22);backgr
 .leaf-card{background:linear-gradient(135deg,#F3FAF5 0%,#D8EEDF 60%,#C6E5D0 100%)!important}
 .btn-line{border-color:rgba(31,90,62,.35)!important;color:#174A33}
 .btn-line svg{stroke:#1F5A3E}
+
+/* 더 진한 초록 (2026-11-02): 예배 시간 줄마다 초록, 교회학교·비전 카드는 초록 바탕에 흰 글씨 */
+.green-head .list .row{margin:8px 0;padding:10px 12px;border:0;border-radius:14px;background:linear-gradient(135deg,#E3F3E8 0%,#C9E7D3 100%)}
+.green-head .list .row:first-child{margin-top:12px}
+.green-head .list .row .grow span{color:#174A33!important}
+.green-head .list .row .tpill{background:linear-gradient(135deg,#2E7656,#1F5A3E);color:#fff}
+.leaf-card{position:relative;overflow:hidden;background:var(--pearl-dark)!important;border-color:transparent!important;color:#fff}
+.leaf-card b,.leaf-card span,.leaf-card div{color:#fff!important}
+.leaf-card .muted{color:#D7EBDD!important}
+.leaf-card .serif{color:#F2D58A!important}
+.leaf-card .gi{background:linear-gradient(135deg,#9FD8B2,#5FB37F)}
+.leaf-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.14) 48%,transparent 62%);background-size:250% 100%;animation:pearl 8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.leaf-card::before{animation:none}}
