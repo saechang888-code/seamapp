@@ -191,3 +191,18 @@ body,.app{background:linear-gradient(180deg,#F4FAF6 0%,#E4F1E8 100%);background-
 .green-head .list .row .tpill{background:linear-gradient(90deg,#86C9A1 0%,#C9E9D5 100%)}
 .badge{background:linear-gradient(90deg,#8CCBA5 0%,#DDF1E5 100%)}
 body,.app{background:linear-gradient(180deg,#EFF8F2 0%,#DCEFE3 100%);background-attachment:fixed}
+
+/* 바로 전 색(연한)과 지금 색(중간)의 가운데 (주인님 2026-11-02 "아주 좋아, 중간 색") — 진주빛 윤기는 그대로 */
+:root{
+  --pearl:var(--sheen),linear-gradient(160deg,#FFFFFF 0%,#E8F4ED 100%);
+  --pearl-dark:var(--sheen),linear-gradient(160deg,#A0D5B4 0%,#E5F4EB 100%);
+  --leaf:var(--sheen),linear-gradient(160deg,#BDE3CB 0%,#96D1AD 100%);
+}
+.btn-navy,.btn-line,.chip.on{background:radial-gradient(120% 140% at 20% 0%,rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 50%),linear-gradient(90deg,#7DC499 0%,#D1EDDC 100%)!important}
+.gi,.quick span.ic,.leaf-card .gi{background:radial-gradient(100% 100% at 30% 15%,rgba(255,255,255,.45) 0%,rgba(255,255,255,0) 55%),linear-gradient(160deg,#85CAA1 0%,#4EA673 100%)!important}
+.tabbar a .ti{background:radial-gradient(100% 100% at 30% 15%,rgba(255,255,255,.45) 0%,rgba(255,255,255,0) 55%),linear-gradient(160deg,#A0D7B6 0%,#6DBB8D 100%)}
+.tabbar a.on .ti{background:radial-gradient(100% 100% at 30% 15%,rgba(255,255,255,.45) 0%,rgba(255,255,255,0) 55%),linear-gradient(160deg,#79C097 0%,#4EA673 100%)}
+.green-head .list .row{background:var(--sheen),linear-gradient(90deg,#D9F0E1 0%,#F3FAF6 100%)}
+.green-head .list .row .tpill{background:linear-gradient(90deg,#96D1AD 0%,#CEEBD9 100%)}
+.badge{background:linear-gradient(90deg,#A0D5B4 0%,#E5F4EB 100%)}
+body,.app{background:linear-gradient(180deg,#F1F9F4 0%,#E0F0E5 100%);background-attachment:fixed}
