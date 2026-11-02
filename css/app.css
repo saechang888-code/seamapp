@@ -155,3 +155,21 @@ input[type=text],input[type=tel],textarea{border-color:rgba(31,90,62,.22);backgr
 .hero::after{background:linear-gradient(180deg,rgba(124,196,154,.15),rgba(30,84,58,.82))}
 .video{box-shadow:0 0 0 3px #D6EFDF,0 10px 24px rgba(46,118,86,.18)}
 :root{--navy:#5FB37F}
+
+/* 자연스러운 그라데이션 (주인님 2026-11-02): 물결치듯 여러 번 꺾이는 색과 움직이는 빛을 빼고, 한 방향으로 곱게 번지게 */
+:root{
+  --pearl:linear-gradient(160deg,#FFFFFF 0%,#EDF7F1 100%);
+  --pearl-dark:linear-gradient(160deg,#B4DFC4 0%,#EEF8F2 100%);
+  --leaf:linear-gradient(160deg,#C9E9D5 0%,#A6D9B9 100%);
+}
+body,.app{background:linear-gradient(180deg,#F4FAF6 0%,#E4F1E8 100%);background-attachment:fixed}
+.pearl-dark::before,.hero::before,.leaf-card::before{display:none!important;animation:none!important}
+.btn-navy,.btn-line,.chip.on{background:linear-gradient(90deg,#86C9A1 0%,#D6F0E0 100%)!important}
+.gi,.quick span.ic,.leaf-card .gi{background:linear-gradient(160deg,#8ED0A8 0%,#5FB37F 100%)!important}
+.tabbar a .ti{background:linear-gradient(160deg,#A9DCBC 0%,#7CC49A 100%)}
+.tabbar a.on .ti{background:linear-gradient(160deg,#7CC49A 0%,#4FA875 100%)}
+.green-head .list .row{background:linear-gradient(90deg,#E4F4EA 0%,#F6FBF8 100%)}
+.green-head .list .row .tpill{background:linear-gradient(90deg,#A6D9B9 0%,#D3EEDD 100%)}
+.badge{background:linear-gradient(90deg,#B4DFC4 0%,#E6F5EC 100%)}
+.hero{background:linear-gradient(180deg,#8CCBA5 0%,#2E7656 100%)}
+.hero::after{background:linear-gradient(180deg,rgba(124,196,154,.1) 0%,rgba(30,84,58,.8) 100%)}
