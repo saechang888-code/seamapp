@@ -44,11 +44,11 @@
         <div class="cap"><span style="display:flex;align-items:center;gap:10px"><img src="images/logo.png" alt="" width="40" height="40" style="border-radius:10px;background:#fff;padding:3px"><span class="serif" style="font-size:24px;font-weight:700">${esc(c.name)}</span></span>
           <span style="font-size:13px;opacity:.9">${esc(c.motto)}</span></div></div>
       <div class="grid4" style="grid-template-columns:repeat(5,minmax(0,1fr));gap:6px">
-        <a class="quick" href="#/worship"><span class="ic">${ico('clock', '#1F3A78', 20)}</span>예배 시간</a>
-        <a class="quick" href="#/worship"><span class="ic">${ico('pin', '#1F3A78', 20)}</span>오시는 길</a>
-        <a class="quick" href="tel:${c.phone.replace(/-/g, '')}"><span class="ic">${ico('phone', '#1F3A78', 20)}</span>전화하기</a>
-        <a class="quick" href="#/give"><span class="ic">${ico('gift', '#1F3A78', 20)}</span>헌금</a>
-        <button class="quick" data-invite style="font-family:inherit"><span class="ic">${ico('share', '#1F3A78', 20)}</span>초대하기</button>
+        <a class="quick" href="#/worship"><span class="ic">${ico('clock', '#1F5A3E', 20)}</span>예배 시간</a>
+        <a class="quick" href="#/worship"><span class="ic">${ico('pin', '#1F5A3E', 20)}</span>오시는 길</a>
+        <a class="quick" href="tel:${c.phone.replace(/-/g, '')}"><span class="ic">${ico('phone', '#1F5A3E', 20)}</span>전화하기</a>
+        <a class="quick" href="#/give"><span class="ic">${ico('gift', '#1F5A3E', 20)}</span>헌금</a>
+        <button class="quick" data-invite style="font-family:inherit"><span class="ic">${ico('share', '#1F5A3E', 20)}</span>초대하기</button>
       </div>
       ${s ? `<section style="display:flex;flex-direction:column;gap:10px">
         <div style="display:flex;justify-content:space-between;align-items:baseline"><h2>이주의 설교</h2><a href="#/sermons" class="muted" style="font-size:13px">지난 설교 ›</a></div>
@@ -61,7 +61,7 @@
           <span style="flex:1;display:flex;flex-direction:column;gap:3px"><span style="font-weight:700;color:var(--navy-deep)">${esc(e.title)}</span><span class="muted" style="font-size:12px;line-height:1.5">${esc(e.desc)}</span></span>${ico('next', '#4A5263', 16)}</a>`).join('')}
       </section>` : ''}
       <a class="card" href="https://saechang888-code.github.io/berith/" target="_blank" rel="noopener" style="display:flex;gap:14px;align-items:center;background:var(--navy-soft);border-color:transparent">
-        ${ico('book', '#1F3A78', 26)}<span style="flex:1;display:flex;flex-direction:column;gap:3px"><span style="font-weight:700;color:var(--navy-deep)">베리트365 — 매일 말씀과 묵상</span><span class="muted" style="font-size:12px">오늘의 말씀 영상 · 성경 · 나의 묵상 기록</span></span>${ico('ext', '#1F3A78', 16)}</a>
+        ${ico('book', '#1F5A3E', 26)}<span style="flex:1;display:flex;flex-direction:column;gap:3px"><span style="font-weight:700;color:var(--navy-deep)">베리트365 — 매일 말씀과 묵상</span><span class="muted" style="font-size:12px">오늘의 말씀 영상 · 성경 · 나의 묵상 기록</span></span>${ico('ext', '#1F5A3E', 16)}</a>
     </main>${tabbar('home')}`;
   }
 
@@ -77,7 +77,7 @@
         <input type="text" id="sq" value="${esc(q)}" placeholder="설교 제목으로 찾기" style="border:0;padding:0;background:none;height:44px"></label>
       <div class="list">${list.map(s => `<a href="#/sermons" data-cur="${esc(s.video)}" data-title="${esc(s.title)}"><img class="thumb" src="${yt(s.video)}" alt="" loading="lazy">
           <span class="grow"><span style="font-weight:700;color:var(--navy-deep);font-size:15px">${esc(s.title)}</span><span class="sub">${dateKo(s.date)} · ${esc(s.preacher)}</span></span></a>`).join('') || '<p class="muted">찾는 설교가 없습니다.</p>'}</div>
-      <a class="btn btn-line" href="https://www.youtube.com/@seamvision" target="_blank" rel="noopener">유튜브에서 모든 영상 보기 ${ico('ext', '#14275A', 16)}</a>
+      <a class="btn btn-line" href="https://www.youtube.com/@seamvision" target="_blank" rel="noopener">유튜브에서 모든 영상 보기 ${ico('ext', '#12382A', 16)}</a>
     </main>${tabbar('sermons')}`;
   }
 
@@ -89,14 +89,14 @@
       <div class="card" style="padding:6px 18px"><div class="list">${c.worship.map(w => `<div class="row"><span class="grow"><span style="font-weight:700;color:var(--navy-deep)">${esc(w.name)}</span>${w.note ? `<span class="sub">${esc(w.note)}</span>` : ''}</span><span class="serif" style="color:var(--gold-text);font-weight:700">${esc(w.time)}</span></div>`).join('')}</div></div>
       <section style="display:flex;flex-direction:column;gap:10px"><h2>온라인으로 함께하기</h2>
         <div class="grid2">
-          <a class="card" href="https://www.youtube.com/@seamvision" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:6px">${ico('play', '#1F3A78')}<b style="color:var(--navy-deep)">주일 설교 영상</b><span class="muted" style="font-size:12px">유튜브 [새암교회]비전센터</span></a>
-          <a class="card" href="https://saechang888-code.github.io/berith/" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:6px">${ico('book', '#1F3A78')}<b style="color:var(--navy-deep)">베리트365</b><span class="muted" style="font-size:12px">매일 말씀 묵상</span></a>
+          <a class="card" href="https://www.youtube.com/@seamvision" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:6px">${ico('play', '#1F5A3E')}<b style="color:var(--navy-deep)">주일 설교 영상</b><span class="muted" style="font-size:12px">유튜브 [새암교회]비전센터</span></a>
+          <a class="card" href="https://saechang888-code.github.io/berith/" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:6px">${ico('book', '#1F5A3E')}<b style="color:var(--navy-deep)">베리트365</b><span class="muted" style="font-size:12px">매일 말씀 묵상</span></a>
         </div></section>
       <section style="display:flex;flex-direction:column;gap:10px"><h2>오시는 길</h2>
         <img src="images/vision-center.jpg" alt="새암교회 비전센터 전경" style="border-radius:16px;aspect-ratio:16/9;object-fit:cover;width:100%">
         <div class="card" style="display:flex;flex-direction:column;gap:8px"><span style="font-weight:700;color:var(--navy-deep)">${esc(c.address)}</span><span class="muted" style="font-size:13px">전화 ${esc(c.phone)}</span></div>
         <div class="grid2"><a class="btn btn-navy" href="${esc(c.maps.naver)}" target="_blank" rel="noopener">네이버 지도</a><a class="btn btn-line" href="${esc(c.maps.kakao)}" target="_blank" rel="noopener">카카오맵</a></div>
-        <a class="btn btn-line" href="tel:${c.phone.replace(/-/g, '')}">${ico('phone', '#14275A', 18)}교회로 전화하기</a>
+        <a class="btn btn-line" href="tel:${c.phone.replace(/-/g, '')}">${ico('phone', '#12382A', 18)}교회로 전화하기</a>
       </section>
     </main>${tabbar('worship')}`;
   }
@@ -104,7 +104,7 @@
   // ---------- 헌금 안내 (계좌 이체) ----------
   function offeringCard() {
     const o = D.church && D.church.offering; if (!o) return '';
-    return `<section id="offering" class="card" style="display:flex;flex-direction:column;gap:12px;background:var(--navy-deep);border-color:var(--navy-deep);color:#fff">
+    return `<section id="offering" class="card pearl-dark" style="display:flex;flex-direction:column;gap:12px;color:#fff">
       <span class="eyebrow" style="color:#E9C97A">OFFERING</span>
       <b class="serif" style="font-size:19px">헌금 안내</b>
       <span style="font-size:13px;opacity:.85;line-height:1.6">각각 그 마음에 정한 대로 할 것이요 인색함으로나 억지로 하지 말지니 하나님은 즐겨 내는 자를 사랑하시느니라 (고후 9:7)</span>
@@ -133,7 +133,7 @@
         <span class="muted" style="font-size:12px;line-height:1.6">'교회에 보내기'를 누르면 문자·카카오톡 보내기 창이 열려요. 받는 사람에 교회(${esc(D.church ? D.church.phone : '')})나 담당 사역자를 고르시면 됩니다. 곧 앱 안에서 교회로 바로 전해지도록 바꿀 예정이에요.</span>
       </div>
       ${offeringCard()}
-      <div class="card" style="display:flex;gap:14px;align-items:center">${ico('share', '#1F3A78', 26)}<span style="flex:1;display:flex;flex-direction:column;gap:3px"><b style="color:var(--navy-deep)">친구·가족 초대하기</b><span class="muted" style="font-size:12px">새암교회 앱을 소중한 사람에게 보내 보세요.</span></span><button class="chip on" data-invite>보내기</button></div>
+      <div class="card" style="display:flex;gap:14px;align-items:center">${ico('share', '#1F5A3E', 26)}<span style="flex:1;display:flex;flex-direction:column;gap:3px"><b style="color:var(--navy-deep)">친구·가족 초대하기</b><span class="muted" style="font-size:12px">새암교회 앱을 소중한 사람에게 보내 보세요.</span></span><button class="chip on" data-invite>보내기</button></div>
     </main>${tabbar('together')}`;
   }
 
@@ -142,7 +142,7 @@
     const c = D.church; if (!c) return `<main></main>${tabbar('about')}`;
     return `<main>
       <div style="display:flex;flex-direction:column;gap:4px"><span class="eyebrow">ABOUT</span><h1>교회 소개</h1><span class="muted" style="font-size:13px">${esc(c.denom)} ${esc(c.name)}</span></div>
-      ${c.meaning ? `<section style="display:flex;flex-direction:column;gap:12px;padding:22px 20px;border-radius:20px;background:var(--navy-deep);color:#fff">
+      ${c.meaning ? `<section class="pearl-dark" style="display:flex;flex-direction:column;gap:12px;padding:22px 20px;border-radius:20px;color:#fff">
         <span class="eyebrow" style="color:#E9C97A">OUR NAME</span>
         <span class="serif" style="font-size:22px;font-weight:700;line-height:1.4">SEAM, 새암<br><span style="font-size:15px;font-weight:400;opacity:.85">이름에 담긴 뜻</span></span>
         ${c.meaning.map(m => `<div style="display:flex;flex-direction:column;gap:6px;padding-top:12px;border-top:1px solid rgba(255,255,255,.15)">
