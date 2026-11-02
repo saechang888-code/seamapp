@@ -86,15 +86,15 @@
     const c = D.church; if (!c) return `<main></main>${tabbar('worship')}`;
     return `<main>
       <div style="display:flex;flex-direction:column;gap:4px"><span class="eyebrow">WORSHIP</span><h1>예배 안내</h1><span class="muted serif" style="font-size:14px">하나님은 영이시니 예배하는 자가 영과 진리로 예배할지니라 (요 4:24)</span></div>
-      <div class="card" style="padding:6px 18px"><div class="list">${c.worship.map(w => `<div class="row"><span class="grow"><span style="font-weight:700;color:var(--navy-deep)">${esc(w.name)}</span>${w.note ? `<span class="sub">${esc(w.note)}</span>` : ''}</span><span class="serif" style="color:var(--gold-text);font-weight:700">${esc(w.time)}</span></div>`).join('')}</div></div>
+      <div class="card green-head" style="padding:0 18px 6px"><div class="card-band">${ico('clock', '#FFFFFF', 18)}예배 시간</div><div class="list">${c.worship.map(w => `<div class="row"><span class="gi">${ico('clock', '#FFFFFF', 18)}</span><span class="grow"><span style="font-weight:700;color:var(--navy-deep)">${esc(w.name)}</span>${w.note ? `<span class="sub">${esc(w.note)}</span>` : ''}</span><span class="tpill">${esc(w.time)}</span></div>`).join('')}</div></div>
       <section style="display:flex;flex-direction:column;gap:10px"><h2>온라인으로 함께하기</h2>
         <div class="grid2">
-          <a class="card" href="https://www.youtube.com/@seamvision" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:6px">${ico('play', '#1F5A3E')}<b style="color:var(--navy-deep)">주일 설교 영상</b><span class="muted" style="font-size:12px">유튜브 [새암교회]비전센터</span></a>
-          <a class="card" href="https://saechang888-code.github.io/berith/" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:6px">${ico('book', '#1F5A3E')}<b style="color:var(--navy-deep)">베리트365</b><span class="muted" style="font-size:12px">매일 말씀 묵상</span></a>
+          <a class="card" href="https://www.youtube.com/@seamvision" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:6px"><span class="gi">${ico('play', '#FFFFFF', 20)}</span><b style="color:var(--navy-deep)">주일 설교 영상</b><span class="muted" style="font-size:12px">유튜브 [새암교회]비전센터</span></a>
+          <a class="card" href="https://saechang888-code.github.io/berith/" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:6px"><span class="gi">${ico('book', '#FFFFFF', 20)}</span><b style="color:var(--navy-deep)">베리트365</b><span class="muted" style="font-size:12px">매일 말씀 묵상</span></a>
         </div></section>
       <section style="display:flex;flex-direction:column;gap:10px"><h2>오시는 길</h2>
         <img src="images/vision-center.jpg" alt="새암교회 비전센터 전경" style="border-radius:16px;aspect-ratio:16/9;object-fit:cover;width:100%">
-        <div class="card" style="display:flex;flex-direction:column;gap:8px"><span style="font-weight:700;color:var(--navy-deep)">${esc(c.address)}</span><span class="muted" style="font-size:13px">전화 ${esc(c.phone)}</span></div>
+        <div class="card" style="display:flex;gap:12px;align-items:center"><span class="gi">${ico('pin', '#FFFFFF', 20)}</span><span style="display:flex;flex-direction:column;gap:4px"><span style="font-weight:700;color:var(--navy-deep)">${esc(c.address)}</span><span class="muted" style="font-size:13px">전화 ${esc(c.phone)}</span></span></div>
         <div class="grid2"><a class="btn btn-navy" href="${esc(c.maps.naver)}" target="_blank" rel="noopener">네이버 지도</a><a class="btn btn-line" href="${esc(c.maps.kakao)}" target="_blank" rel="noopener">카카오맵</a></div>
         <a class="btn btn-line" href="tel:${c.phone.replace(/-/g, '')}">${ico('phone', '#12382A', 18)}교회로 전화하기</a>
       </section>
@@ -152,20 +152,20 @@
       </section>` : ''}
       <section class="card" style="display:flex;flex-direction:column;gap:14px">
         <div style="display:flex;gap:14px;align-items:center"><img src="images/pastor.jpg" alt="이재선 담임목사" width="72" height="88" style="border-radius:12px;object-fit:cover;width:72px;height:88px">
-          <span style="display:flex;flex-direction:column;gap:4px"><span class="eyebrow">GREETING</span><b class="serif" style="font-size:18px;color:var(--navy-deep)">이재선 목사</b><span class="muted" style="font-size:12px">새암교회 담임목사</span></span></div>
+          <span style="display:flex;flex-direction:column;gap:4px"><span class="eyebrow" style="color:#2E7656">GREETING</span><b class="serif" style="font-size:18px;color:var(--navy-deep)">이재선 목사</b><span class="muted" style="font-size:12px">새암교회 담임목사</span></span></div>
         ${c.greeting.map((p, i) => `<p style="margin:0;line-height:1.85;font-size:15px;${i ? '' : 'font-weight:700;color:var(--navy-deep)'}">${esc(p)}</p>`).join('')}
       </section>
       <section style="display:flex;flex-direction:column;gap:10px"><h2>새암의 비전</h2><span class="muted" style="font-size:13px">말씀과 성령의 능력으로 4×7의 비전을 이루는 생명의 공동체</span>
-        <div class="grid2">${c.vision.map(v => `<div class="card" style="display:flex;flex-direction:column;gap:2px"><span class="serif" style="font-size:26px;font-weight:700;color:var(--gold-text)">${esc(v.big)}</span><span style="font-size:13px">${esc(v.text)}</span></div>`).join('')}</div>
+        <div class="grid2">${c.vision.map(v => `<div class="card leaf-card" style="display:flex;flex-direction:column;gap:2px"><span class="serif" style="font-size:28px;font-weight:700;color:#174A33">${esc(v.big)}</span><span style="font-size:13px">${esc(v.text)}</span></div>`).join('')}</div>
         <div class="card" style="font-size:14px;line-height:1.8"><b style="color:var(--navy-deep)">D12 비전</b> — 모든 성도가 행복모임 리더가 되어 자신의 12명의 제자를 세우는 비전입니다.<br><b style="color:var(--navy-deep)">두 날개</b> — 영감 있는 대그룹 예배와 소그룹 셀가족 모임의 두 날개로 날아오릅니다.</div>
       </section>
       <section style="display:flex;flex-direction:column;gap:10px"><h2>걸어온 길</h2>
-        <div class="card" style="padding:6px 18px"><div class="list">${c.history.map(([d, t]) => `<div class="row" style="min-height:48px"><span style="width:96px;flex-shrink:0;font-size:12px;color:var(--gold-text);font-weight:700">${esc(d)}</span><span style="font-size:14px">${esc(t)}</span></div>`).join('')}</div></div></section>
+        <div class="card green-head" style="padding:0 18px 6px"><div class="card-band">${ico('church', '#FFFFFF', 18)}새암교회의 발자취</div><div class="list">${c.history.map(([d, t]) => `<div class="row" style="min-height:48px"><span class="tpill" style="width:104px;flex-shrink:0;text-align:center">${esc(d)}</span><span style="font-size:14px">${esc(t)}</span></div>`).join('')}</div></div></section>
       <section style="display:flex;flex-direction:column;gap:10px"><h2>교회학교</h2><span class="muted" style="font-size:13px">하나님의 언약의 자녀를 함께 양육하는 교육 공동체 · 주일 오전 11시</span>
-        <div class="grid2" style="grid-template-columns:repeat(3,1fr)">${c.school.map(s => `<div class="card" style="text-align:center;padding:14px 8px"><b style="color:var(--navy-deep)">${esc(s.name)}</b><div class="muted" style="font-size:11px;margin-top:4px">${esc(s.verse)}</div></div>`).join('')}</div></section>
+        <div class="grid2" style="grid-template-columns:repeat(3,1fr)">${c.school.map(s => `<div class="card leaf-card" style="text-align:center;padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:6px"><span class="gi">${ico('book', '#FFFFFF', 18)}</span><b style="color:var(--navy-deep)">${esc(s.name)}</b><div class="muted" style="font-size:11px;margin-top:4px">${esc(s.verse)}</div></div>`).join('')}</div></section>
       <section style="display:flex;flex-direction:column;gap:10px"><h2>선교와 섬김</h2>
-        <div class="card" style="display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.7"><span><b style="color:var(--navy-deep)">국내</b> · ${c.mission.domestic.map(esc).join(' · ')}</span><span><b style="color:var(--navy-deep)">해외</b> · ${c.mission.world.map(esc).join(' · ')}</span><span class="muted" style="font-size:12px">선교사님들의 안전을 위해 이름은 싣지 않았습니다.</span></div></section>
-      <div class="list">${c.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener"><span class="grow"><span style="font-size:15px;color:var(--navy-deep)">${esc(l.name)}</span></span>${ico('ext', '#4A5263', 16)}</a>`).join('')}</div>
+        <div class="card" style="display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.7"><span style="display:flex;gap:10px;align-items:center"><span class="gi">${ico('hands', '#FFFFFF', 18)}</span><b style="color:var(--navy-deep)">함께 섬기는 곳</b></span><span><b style="color:var(--navy-deep)">국내</b> · ${c.mission.domestic.map(esc).join(' · ')}</span><span><b style="color:var(--navy-deep)">해외</b> · ${c.mission.world.map(esc).join(' · ')}</span><span class="muted" style="font-size:12px">선교사님들의 안전을 위해 이름은 싣지 않았습니다.</span></div></section>
+      <div class="list">${c.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener"><span class="gi">${ico('ext', '#FFFFFF', 18)}</span><span class="grow"><span style="font-size:15px;color:var(--navy-deep)">${esc(l.name)}</span></span>${ico('ext', '#4A5263', 16)}</a>`).join('')}</div>
     </main>${tabbar('about')}`;
   }
 
