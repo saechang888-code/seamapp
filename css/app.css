@@ -331,3 +331,13 @@ h2::before{width:4px;height:20px;background:#2E7656}
 .hero-title{font-size:38px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
 .hero-sub{font-size:14px;opacity:.9}
 .hero-btn{align-self:flex-start;margin-top:8px;display:flex;align-items:center;gap:8px;height:46px;padding:0 20px;border:0;border-radius:23px;background:#FFFFFF;color:#12382A;font-size:15px;font-weight:700;font-family:var(--sans)}
+
+/* 홈: 함께하는 교회 생활 칸, 예배 실황, 처음 오셨나요 띠 (2026-11-03) */
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tile{display:flex;flex-direction:column;gap:6px;padding:16px;border:1px solid #ECEEEC;border-radius:16px;background:#fff}
+.tile b{font-size:16px;color:#111;margin-top:4px}
+.tile span:not(.gi){font-size:12px;color:#5F6670;line-height:1.5}
+.live-dot{width:14px;height:14px;flex-shrink:0;border-radius:7px;background:#E5484D;box-shadow:0 0 0 5px rgba(229,72,77,.18)}
+.welcome-band{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 20px;border-radius:18px;color:#fff;background:linear-gradient(135deg,#1A4D36 0%,#3E8F66 100%)}
+.welcome-band b{color:#fff}
+.welcome-band svg{stroke:#fff}

@@ -38,7 +38,8 @@
   function viewHome() {
     const c = D.church, s = D.sermons[0];
     if (!c) return `<main><p class="muted">불러오는 중입니다…</p></main>${tabbar('home')}`;
-    const ev = c.events.filter(e => e.date >= new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10));
+    const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10), thisMonth = Number(today.slice(5, 7));
+    const ev = c.events.filter(e => e.date >= today), monthEv = ev.filter(e => e.date.slice(0, 7) === today.slice(0, 7));
     return `<main>
       <div class="hero hero-big"><img src="images/vision-center.jpg" alt="새암교회 비전센터">
         <div class="cap"><span class="hero-eyebrow">SEAM CHURCH</span>
@@ -52,19 +53,50 @@
         <a class="quick" href="#/give"><span class="ic">${ico('gift', '#FFFFFF', 20)}</span>헌금</a>
         <button class="quick" data-invite style="font-family:inherit"><span class="ic">${ico('share', '#FFFFFF', 20)}</span>초대하기</button>
       </div>
-      ${s ? `<section style="display:flex;flex-direction:column;gap:10px">
-        <div style="display:flex;justify-content:space-between;align-items:baseline"><h2>이주의 설교</h2><a href="#/sermons" class="muted" style="font-size:13px">지난 설교 ›</a></div>
-        ${videoBox(s, 'hbox', '이주의 설교')}
-        <div><div class="serif" style="font-size:17px;font-weight:700;color:var(--navy-deep)">${esc(s.title)}</div><div class="muted" style="font-size:13px;margin-top:3px">${dateKo(s.date)} 주일예배 · ${esc(s.preacher)}</div></div>
+      ${s ? `<section style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><h2>이주의 예배</h2><a href="#/sermons" class="muted" style="font-size:13px">지난 예배 ›</a></div>
+        ${videoBox(s, 'hbox', '이주의 예배')}
+        <div><div style="font-size:18px;font-weight:800;color:#111">${esc(s.title)}</div><div class="muted" style="font-size:13px;margin-top:3px">${dateKo(s.date)} 주일예배 · ${esc(s.preacher)}</div></div>
+        <a class="card" href="${esc(c.live)}" target="_blank" rel="noopener" style="display:flex;gap:14px;align-items:center">
+          <span class="live-dot" aria-hidden="true"></span><span style="flex:1;display:flex;flex-direction:column;gap:2px"><b style="color:#111">예배 실황</b><span class="muted" style="font-size:12px">주일 오전 9시 · 11시 예배를 유튜브로 함께 드려요</span></span>${ico('ext', '#2E7656', 16)}</a>
       </section>` : ''}
-      ${ev.length ? `<section style="display:flex;flex-direction:column;gap:10px"><h2>교회 소식</h2>
-        ${ev.map(e => `<a class="card" href="${esc(e.url)}" target="_blank" rel="noopener" style="display:flex;gap:14px;align-items:center">
-          <span style="width:54px;height:54px;flex-shrink:0;border-radius:14px;background:var(--navy);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center"><span style="font-size:11px">${Number(e.date.slice(5, 7))}월</span><span class="serif" style="font-size:20px;font-weight:700;line-height:1">${Number(e.date.slice(8))}</span></span>
-          <span style="flex:1;display:flex;flex-direction:column;gap:3px"><span style="font-weight:700;color:var(--navy-deep)">${esc(e.title)}</span><span class="muted" style="font-size:12px;line-height:1.5">${esc(e.desc)}</span></span>${ico('next', '#4A5263', 16)}</a>`).join('')}
-      </section>` : ''}
+      <section style="display:flex;flex-direction:column;gap:12px"><h2>함께하는 교회 생활</h2>
+        <div class="tiles">
+          <a class="tile" href="#/group"><span class="gi">${ico('hands', '#FFFFFF', 20)}</span><b>교회 소그룹</b><span>행복모임 · 셀가족</span></a>
+          <a class="tile" href="#/process"><span class="gi">${ico('book', '#FFFFFF', 20)}</span><b>새암 프로세스</b><span>평생 제자 훈련</span></a>
+          <a class="tile" href="#/school"><span class="gi">${ico('church', '#FFFFFF', 20)}</span><b>교육부서</b><span>유치부 · 유초등부 · 청소년부</span></a>
+          <a class="tile" href="#/together" data-card="prayer"><span class="gi">${ico('hands', '#FFFFFF', 20)}</span><b>기도 요청</b><span>함께 기도할게요</span></a>
+          <a class="tile" href="#/news"><span class="gi">${ico('clock', '#FFFFFF', 20)}</span><b>교회 소식</b><span>행사 · 주보 · 앨범</span></a>
+          <a class="tile" href="#/welcome"><span class="gi">${ico('home', '#FFFFFF', 20)}</span><b>처음 방문자</b><span>오신 것을 환영해요</span></a>
+        </div></section>
+      <section style="display:flex;flex-direction:column;gap:12px"><h2>${monthEv.length ? `${thisMonth}월의 이벤트` : '다가오는 행사'}</h2>
+        ${(monthEv.length ? monthEv : ev).map(e => eventCard(e)).join('') || '<p class="muted" style="margin:0">예정된 행사가 없습니다.</p>'}</section>
+      <a class="welcome-band" href="#/welcome"><span style="display:flex;flex-direction:column;gap:4px"><b style="font-size:18px">처음 오셨나요?</b><span style="font-size:13px;opacity:.9">새암교회가 반갑게 맞이합니다. 예배 시간과 오시는 길을 알려 드릴게요.</span></span>${ico('next', '#FFFFFF', 20)}</a>
       <a class="card" href="https://saechang888-code.github.io/berith/" target="_blank" rel="noopener" style="display:flex;gap:14px;align-items:center;background:var(--navy-soft);border-color:transparent">
         ${ico('book', '#1F5A3E', 26)}<span style="flex:1;display:flex;flex-direction:column;gap:3px"><span style="font-weight:700;color:var(--navy-deep)">베리트365 — 매일 말씀과 묵상</span><span class="muted" style="font-size:12px">오늘의 말씀 영상 · 성경 · 나의 묵상 기록</span></span>${ico('ext', '#1F5A3E', 16)}</a>
     </main>${tabbar('home')}`;
+  }
+
+  function eventCard(e) {
+    return `<a class="card" href="${esc(e.url)}" target="_blank" rel="noopener" style="display:flex;gap:14px;align-items:center">
+      <span style="width:54px;height:54px;flex-shrink:0;border-radius:14px;background:#2E7656;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center"><span style="font-size:11px">${Number(e.date.slice(5, 7))}월</span><span style="font-size:20px;font-weight:800;line-height:1">${Number(e.date.slice(8))}</span></span>
+      <span style="flex:1;display:flex;flex-direction:column;gap:3px"><b style="color:#111">${esc(e.title)}</b><span class="muted" style="font-size:12px;line-height:1.5">${esc(e.desc)}</span></span>${ico('next', '#5F6670', 16)}</a>`;
+  }
+  // 홈의 '함께하는 교회 생활' 칸에서 들어가는 쪽들
+  const page = (eyebrow, title, sub, body, tab) => `<main><div style="display:flex;flex-direction:column;gap:4px"><a href="#/home" class="muted" style="font-size:13px">‹ 홈</a><span class="eyebrow">${eyebrow}</span><h1>${title}</h1>${sub ? `<span class="muted" style="font-size:14px;line-height:1.7">${sub}</span>` : ''}</div>${body}</main>${tabbar(tab || 'home')}`;
+  const textCard = (t, d, n) => `<div class="card" style="display:flex;gap:14px;align-items:flex-start">${n ? `<span class="gi" style="font-weight:800;color:#fff;font-size:16px">${esc(n)}</span>` : ''}<span style="display:flex;flex-direction:column;gap:6px"><b style="font-size:16px;color:#111">${esc(t)}</b><span style="font-size:14px;line-height:1.8;color:#333">${esc(d)}</span></span></div>`;
+  function viewGroup() { const g = D.church.groups; return page('SMALL GROUP', '교회 소그룹', esc(g.intro), g.items.map(i => textCard(i.name, i.text)).join('') + `<a class="btn btn-navy" href="#/together" data-card="ask">소그룹 참여 문의하기</a>`); }
+  function viewProcess() { const p = D.church.process; return page('DISCIPLESHIP', '새암평생제자프로세스', esc(p.intro), p.steps.map(i => textCard(i.name, i.text, i.no)).join('') + `<h2>캠프</h2>` + p.camps.map(i => textCard(i.name, i.text)).join('') + `<p class="muted" style="margin:0;font-size:13px">${esc(p.ask)}</p><a class="btn btn-navy" href="tel:${D.church.phone.replace(/-/g, '')}">교회로 문의하기</a>`); }
+  function viewSchool() { return page('CHURCH SCHOOL', '교육부서', '하나님의 언약의 자녀를 함께 양육하는 교육 공동체 · 예배는 주일 오전 11시', D.church.school_detail.map(i => textCard(i.name + ' · ' + i.verse, i.goal)).join('')); }
+  function viewNews() { const c = D.church; return page('NEWS', '교회 소식', '새암교회의 행사와 예배, 주보 소식', c.events.map(eventCard).join('') + `<h2>최근 예배</h2><div class="list">${D.sermons.slice(0, 4).map(s => `<a href="#/sermons" data-cur="${esc(s.video)}" data-title="${esc(s.title)}"><img class="thumb" src="${yt(s.video)}" alt="" loading="lazy"><span class="grow"><b style="color:#111">${esc(s.title)}</b><span class="sub">${dateKo(s.date)}</span></span></a>`).join('')}</div><a class="btn btn-navy" href="https://www.seamchurch.com/main/sub.html?pageCode=12" target="_blank" rel="noopener">주보 · 교회 앨범 보기</a>`); }
+  function viewWelcome() {
+    const c = D.church;
+    return page('WELCOME', '처음 오셨나요?', '찾아 주신 모든 분을 환영합니다. 새암교회는 새암평생제자프로세스로 처음 믿는 분부터 함께 예수님을 만나고 배워 가도록 돕습니다.',
+      `<div class="card" style="padding:4px 18px"><div class="list">${c.worship.map(w => `<div class="row"><span class="grow"><b style="color:#111">${esc(w.name)}</b></span><span style="color:#2E7656;font-weight:700">${esc(w.time)}</span></div>`).join('')}</div></div>
+      <div class="card" style="display:flex;gap:12px;align-items:center"><span class="gi">${ico('pin', '#FFFFFF', 20)}</span><span style="display:flex;flex-direction:column;gap:4px"><b style="color:#111">${esc(c.address)}</b><span class="muted" style="font-size:13px">전화 ${esc(c.phone)}</span></span></div>
+      <div class="grid2"><a class="btn btn-navy" href="${esc(c.maps.naver)}" target="_blank" rel="noopener">네이버 지도</a><a class="btn btn-navy" href="${esc(c.maps.kakao)}" target="_blank" rel="noopener">카카오맵</a></div>
+      <a class="btn btn-navy" href="#/together" data-card="newcomer">새가족 등록하기</a>
+      <a class="btn btn-line" href="#/process">새암평생제자프로세스 보기</a>`);
   }
 
   // ---------- 설교 ----------
@@ -192,7 +224,7 @@
   // ---------- 길 찾기 ----------
   function route() {
     const a = location.hash.replace(/^#\/?/, '').split('/')[0];
-    $app.innerHTML = a === 'give' ? `<main><div style="display:flex;flex-direction:column;gap:4px"><span class="eyebrow">OFFERING</span><h1>헌금</h1></div>${offeringCard()}</main>${tabbar('together')}` : a === 'sermons' ? viewSermons() : a === 'worship' ? viewWorship() : a === 'together' ? viewTogether() : a === 'about' ? viewAbout() : viewHome();
+    $app.innerHTML = a === 'group' ? viewGroup() : a === 'process' ? viewProcess() : a === 'school' ? viewSchool() : a === 'news' ? viewNews() : a === 'welcome' ? viewWelcome() : a === 'give' ? `<main><div style="display:flex;flex-direction:column;gap:4px"><span class="eyebrow">OFFERING</span><h1>헌금</h1></div>${offeringCard()}</main>${tabbar('together')}` : a === 'sermons' ? viewSermons() : a === 'worship' ? viewWorship() : a === 'together' ? viewTogether() : a === 'about' ? viewAbout() : viewHome();
     window.scrollTo(0, 0);
   }
   document.addEventListener('click', e => {
@@ -205,7 +237,7 @@
     }
     if (el.dataset.play) { const b = document.getElementById(el.dataset.box); play(b, el.dataset.play); b.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
     if (el.dataset.cur) { e.preventDefault(); store.set('cur', el.dataset.cur); route(); return; }
-    if (el.dataset.card) { store.set('card', el.dataset.card); route(); return; }
+    if (el.dataset.card) { store.set('card', el.dataset.card); if (el.tagName !== 'A') route(); return; }
     if (el.hasAttribute('data-invite')) { invite(); return; }
     if (el.hasAttribute('data-send')) sendCard();
   });
