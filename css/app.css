@@ -68,3 +68,26 @@ body,.app{background:linear-gradient(180deg,#F8FAF6 0%,#F1F6F1 100%)}
 @media (prefers-reduced-motion:reduce){.pearl-dark::before,.hero::before{animation:none}}
 .hero::after{background:linear-gradient(180deg,rgba(18,56,42,.1),rgba(15,51,36,.92))}
 .hero .cap{z-index:2}
+
+/* 초록을 더 풍성하게 (주인님 2026-11-02) */
+:root{
+  --pearl:linear-gradient(135deg,#FFFFFF 0%,#EAF6EE 28%,#F4F1F8 52%,#E2F2E7 76%,#F9FCFA 100%);
+  --leaf:linear-gradient(135deg,#D4EBDB 0%,#BFE1CA 55%,#D9EEDF 100%);
+}
+body,.app{background:radial-gradient(120% 60% at 100% 0%,#DDEFE2 0%,transparent 60%),radial-gradient(90% 50% at 0% 100%,#E3F1E6 0%,transparent 60%),linear-gradient(180deg,#F1F8F2 0%,#E7F2EA 100%);background-attachment:fixed}
+h1,h2,h3{color:#174A33}
+h2{display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:6px;height:18px;border-radius:3px;background:linear-gradient(180deg,#5FB37F,#1F5A3E)}
+.card,.quick{border-color:rgba(31,90,62,.16)}
+.quick span.ic{background:var(--leaf);box-shadow:0 2px 6px rgba(31,90,62,.18)}
+.video{box-shadow:0 0 0 3px #CFE7D7,0 10px 24px rgba(18,56,42,.18)}
+.hero::after{background:linear-gradient(180deg,rgba(31,90,62,.25),rgba(13,46,32,.94))}
+.tabbar{background:var(--pearl-dark);border-top:0;box-shadow:0 -6px 20px rgba(18,56,42,.18)}
+.tabbar a{color:#BFDCC9}
+.tabbar a.on{color:#F2D58A}
+.list a,.list .row{border-bottom-color:rgba(31,90,62,.12)}
+.chip:not(.on){border-color:rgba(31,90,62,.22);color:#2D5A42}
+.badge{background:linear-gradient(135deg,#2E7656,#1F5A3E)}
+input[type=text],input[type=tel],textarea{border-color:rgba(31,90,62,.22);background:#FBFEFC}
+.hero{background:linear-gradient(160deg,#2E7656,#0F3324)}
+.hero>img{opacity:.55;mix-blend-mode:luminosity}
