@@ -13,3 +13,7 @@ main{gap:24px;padding:24px 18px calc(124px + env(safe-area-inset-bottom))}main.h
 @media(min-width:700px){body{background:#e9ede7!important}.app{min-height:100vh;box-shadow:0 12px 60px rgba(27,55,37,.11)}}
 @media(max-width:390px){main.home-screen{padding-right:14px;padding-left:14px}.home-hero{margin-right:-14px;margin-left:-14px}.home-service-strip{grid-template-columns:36px minmax(0,1fr) auto 20px;gap:7px;padding:11px 9px}.home-service-times{gap:6px}.home-time-item{padding-left:7px}.home-time-item b{font-size:10px}.home-action-grid{gap:7px}.home-action{padding:10px 9px}.home-action-icon{width:33px;height:33px}.home-action-copy b{font-size:11px}.home-action-copy small{font-size:9px}.home-berith-link{display:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.home-action,.home-life-card,.home-primary{transition:none!important}}
+/* 첫 화면 큰 제목이 사진 위에서도 또렷하게 (11-03 주인님) */
+.home-hero-overlay{background:linear-gradient(180deg,rgba(9,23,14,.10) 0%,rgba(10,24,15,.45) 38%,rgba(8,20,12,.86) 100%),linear-gradient(90deg,rgba(8,20,12,.45),transparent 85%)}
+.home-hero h1{color:#fff!important;font-weight:800;text-shadow:0 2px 4px rgba(0,0,0,.55),0 4px 22px rgba(0,0,0,.5)}
+.home-hero h1 em{color:#f6d898}
