@@ -344,3 +344,59 @@ h2::before{width:4px;height:20px;background:#2E7656}
 
 /* 헌금·SEAM 카드는 흰 카드 규칙보다 앞서 초록 카드로 (2026-11-03 바로잡음) */
 .card.pearl-dark,section.pearl-dark{background:var(--pearl-dark)!important;border:0!important;box-shadow:0 8px 22px rgba(18,56,42,.18)!important}
+
+
+/* 새암교회 홈 화면: 편안하고 선명한 환대 */
+:root{--navy:#245A40;--navy-deep:#173D2D;--navy-soft:#EAF2EC;--cream:#F5F6F2;--paper:#FFFFFF;--ink:#1C2821;--ink-soft:#68736B;--line:#E6EAE5;--gold:#C5A15A;}
+html{scroll-behavior:smooth}
+body,.app{background:#F5F6F2!important;color:#1C2821}
+.app{max-width:520px;background:#fff!important}
+main{gap:26px;padding:18px 18px calc(112px + env(safe-area-inset-bottom))}
+h1,h2,h3{color:#173D2D}
+h1{font-size:28px;letter-spacing:-.035em}
+h2{font-family:var(--sans);font-size:20px;letter-spacing:-.025em;color:#1C2821!important}
+h2::before{width:4px;height:19px;border-radius:3px;background:#4B8963}
+.muted{color:#68736B}
+.card{border-color:#E6EAE5;border-radius:18px;box-shadow:0 5px 18px rgba(24,55,38,.045)}
+.hero-big{height:410px;height:clamp(360px,62svh,470px);margin:-18px -18px 0;border-radius:0 0 24px 24px}
+.hero-big>img{object-position:center 46%}
+.hero-big::after{background:linear-gradient(180deg,rgba(12,28,19,.06) 20%,rgba(12,28,19,.78) 100%)!important}
+.hero-big .cap{left:22px;right:22px;bottom:26px;gap:9px}
+.hero-eyebrow{font-size:10px;letter-spacing:.22em;color:#D8E9DC}
+.hero-title{font-size:36px;line-height:1.12;letter-spacing:-.04em}
+.hero-sub{max-width:28em;font-size:14px;line-height:1.65;color:rgba(255,255,255,.9)}
+.hero-btn{min-height:46px;margin-top:7px;padding:0 18px;border-radius:24px;background:#fff;color:#173D2D;box-shadow:0 5px 16px rgba(0,0,0,.16);transition:transform .18s ease,box-shadow .18s ease}
+.grid4[style]{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:7px!important}
+.quick{min-width:0;gap:8px;padding:10px 2px 11px;border:1px solid #E9EDE9;border-radius:16px;background:#fff!important;box-shadow:0 4px 14px rgba(24,55,38,.045);font-size:11px;font-weight:600;color:#34483B}
+.quick span.ic{width:38px;height:38px;border-radius:14px;background:#EAF2EC!important;color:#245A40}
+.quick span.ic svg{stroke:#245A40!important}
+.tiles{gap:10px}
+.tile{min-height:128px;padding:15px;border-color:#E7EBE7;border-radius:17px;background:#fff;box-shadow:0 4px 14px rgba(24,55,38,.035);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.tile .gi{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:13px;background:#EAF2EC!important}
+.tile .gi svg{stroke:#245A40!important}
+.tile b{font-size:15px;letter-spacing:-.02em;color:#203629}
+.tile span:not(.gi){font-size:12px;line-height:1.55;color:#68736B}
+.live-dot{width:11px;height:11px;border-radius:50%;background:#E45757;box-shadow:0 0 0 5px #FCEBEC}
+.welcome-band{padding:20px;border-radius:18px;background:linear-gradient(135deg,#1D4A34 0%,#397853 100%);box-shadow:0 8px 20px rgba(30,75,52,.14)}
+.welcome-band b{font-size:17px!important;letter-spacing:-.02em}
+.welcome-band span span{line-height:1.6}
+.tabbar{max-width:520px;padding:8px 8px calc(10px + env(safe-area-inset-bottom));border-top:1px solid rgba(30,65,43,.1)!important;background:rgba(255,255,255,.96)!important;box-shadow:0 -8px 24px rgba(21,49,33,.07)!important;backdrop-filter:blur(16px)}
+.tabbar a{gap:4px;padding:5px 0 3px;color:#6F7A72;font-size:11px}
+.tabbar a .ti{width:34px;height:34px;border-radius:12px;background:#F0F3F0!important;box-shadow:none!important}
+.tabbar a .ti svg{stroke:#65756A!important}
+.tabbar a.on{color:#245A40}
+.tabbar a.on .ti{background:#245A40!important;box-shadow:none!important}
+.tabbar a.on .ti svg{stroke:#fff!important}
+.btn-navy,.btn-line,.chip.on{border:0!important;border-radius:14px;background:#245A40!important;color:#fff!important;box-shadow:0 5px 14px rgba(36,90,64,.16)}
+.btn-line{background:#EEF4EF!important;color:#245A40!important;box-shadow:none}
+.btn-line svg{stroke:#245A40!important}
+.chip{transition:background-color .18s ease,color .18s ease,border-color .18s ease}
+input[type=text],input[type=tel],textarea{border-color:#DEE5DE;border-radius:14px}
+input[type=text]:focus, input[type=tel]:focus, textarea:focus{outline:3px solid rgba(75,137,99,.18);border-color:#4B8963}
+.toast{max-width:calc(100% - 32px);bottom:calc(92px + env(safe-area-inset-bottom));border-radius:14px;background:#173D2D;box-shadow:0 8px 24px rgba(10,35,21,.2)}
+a,button{-webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid rgba(75,137,99,.55);outline-offset:3px}
+@media (hover:hover){.quick:hover,.tile:hover{transform:translateY(-2px);border-color:#C9D9CD;box-shadow:0 8px 20px rgba(24,55,38,.08)}.hero-btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.2)}}
+@media (max-width:360px){main{padding-right:14px;padding-left:14px}.hero-big{margin-right:-14px;margin-left:-14px}.hero-title{font-size:32px}.quick{font-size:10px}.quick span.ic{width:34px;height:34px;border-radius:12px}}
+@media (min-width:700px){body{background:#EDF1EC!important}.app{min-height:100vh;box-shadow:0 12px 60px rgba(27,55,37,.1)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
