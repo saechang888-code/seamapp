@@ -29,3 +29,17 @@ if __name__ == '__main__':
     out = sorted(old.values(), key=lambda s: s['date'], reverse=True)
     json.dump(out, open(PATH, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print('설교', len(out), '편 · 최신:', out[0]['title'] if out else '-')
+
+    # 예배 실황: 유튜브 '라이브' 탭의 지난 생방송 (제목 예: [새암교회]비전센터님의 라이브 방송 [26.11.01])
+    LIVE = os.path.join(ROOT, 'data', 'live.json')
+    lives = {v['video']: v for v in (json.load(open(LIVE, encoding='utf-8')) if os.path.exists(LIVE) else [])}
+    h = get('https://www.youtube.com/@seamvision/streams')
+    for vid in list(dict.fromkeys(re.findall(r'"videoId":"([A-Za-z0-9_-]{11})"', h)))[:15]:
+        if vid in lives: continue
+        title = oembed(vid)
+        d = re.search(r'(\d{2})\.\s*(\d{1,2})\.\s*(\d{1,2})', title)
+        if d:
+            lives[vid] = {'video': vid, 'title': title, 'date': f'20{d.group(1)}-{int(d.group(2)):02d}-{int(d.group(3)):02d}'}
+    lv = sorted(lives.values(), key=lambda s: s['date'], reverse=True)
+    json.dump(lv, open(LIVE, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    print('실황', len(lv), '편 · 최신:', lv[0]['date'] if lv else '-')

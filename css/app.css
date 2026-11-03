@@ -341,3 +341,6 @@ h2::before{width:4px;height:20px;background:#2E7656}
 .welcome-band{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 20px;border-radius:18px;color:#fff;background:linear-gradient(135deg,#1A4D36 0%,#3E8F66 100%)}
 .welcome-band b{color:#fff}
 .welcome-band svg{stroke:#fff}
+
+/* 헌금·SEAM 카드는 흰 카드 규칙보다 앞서 초록 카드로 (2026-11-03 바로잡음) */
+.card.pearl-dark,section.pearl-dark{background:var(--pearl-dark)!important;border:0!important;box-shadow:0 8px 22px rgba(18,56,42,.18)!important}

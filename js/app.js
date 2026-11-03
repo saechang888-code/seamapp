@@ -3,7 +3,7 @@
 (function () {
   'use strict';
   const $app = document.getElementById('app');
-  const D = { church: null, sermons: [] };
+  const D = { church: null, sermons: [], live: [] };
   const APP_URL = 'https://saechang888-code.github.io/seamapp/';
 
   const store = {
@@ -36,7 +36,7 @@
 
   // ---------- 홈 ----------
   function viewHome() {
-    const c = D.church, s = D.sermons[0];
+    const c = D.church, s = D.sermons[0], lv = (D.live || [])[0], lvSermon = lv && D.sermons.find(x => x.date === lv.date);
     if (!c) return `<main><p class="muted">불러오는 중입니다…</p></main>${tabbar('home')}`;
     const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10), thisMonth = Number(today.slice(5, 7));
     const ev = c.events.filter(e => e.date >= today), monthEv = ev.filter(e => e.date.slice(0, 7) === today.slice(0, 7));
@@ -45,7 +45,7 @@
         <div class="cap"><span class="hero-eyebrow">SEAM CHURCH</span>
           <span class="hero-title">${esc(c.name)}</span>
           <span class="hero-sub">${esc(c.motto)}</span>
-          ${s ? `<button class="hero-btn" data-play="${esc(s.video)}" data-box="hbox">${ico('play', '#12382A', 16)}이번 주 설교 보기</button>` : ''}</div></div>
+          ${s || lv ? `<button class="hero-btn" data-play="${esc(lv ? lv.video : s.video)}" data-box="hbox">${ico('play', '#12382A', 16)}이번 주 예배 보기</button>` : ''}</div></div>
       <div class="grid4" style="grid-template-columns:repeat(5,minmax(0,1fr));gap:6px">
         <a class="quick" href="#/worship"><span class="ic">${ico('clock', '#FFFFFF', 20)}</span>예배 시간</a>
         <a class="quick" href="#/worship"><span class="ic">${ico('pin', '#FFFFFF', 20)}</span>오시는 길</a>
@@ -53,12 +53,12 @@
         <a class="quick" href="#/give"><span class="ic">${ico('gift', '#FFFFFF', 20)}</span>헌금</a>
         <button class="quick" data-invite style="font-family:inherit"><span class="ic">${ico('share', '#FFFFFF', 20)}</span>초대하기</button>
       </div>
-      ${s ? `<section style="display:flex;flex-direction:column;gap:12px">
+      ${s || lv ? `<section style="display:flex;flex-direction:column;gap:12px">
         <div style="display:flex;justify-content:space-between;align-items:baseline"><h2>이주의 예배</h2><a href="#/sermons" class="muted" style="font-size:13px">지난 예배 ›</a></div>
-        ${videoBox(s, 'hbox', '이주의 예배')}
-        <div><div style="font-size:18px;font-weight:800;color:#111">${esc(s.title)}</div><div class="muted" style="font-size:13px;margin-top:3px">${dateKo(s.date)} 주일예배 · ${esc(s.preacher)}</div></div>
+        ${lv ? videoBox({ video: lv.video, title: '주일예배 실황' }, 'hbox', '예배 실황') : videoBox(s, 'hbox', '이주의 예배')}
+        <div><div style="font-size:18px;font-weight:800;color:#111">${lv ? `${dateKo(lv.date)} 주일예배 실황` : esc(s.title)}</div><div class="muted" style="font-size:13px;margin-top:3px">${lv && lvSermon ? `설교 「${esc(lvSermon.title)}」 · ${esc(lvSermon.preacher)}` : `${dateKo(s.date)} 주일예배 · ${esc(s.preacher)}`}</div></div>
         <a class="card" href="${esc(c.live)}" target="_blank" rel="noopener" style="display:flex;gap:14px;align-items:center">
-          <span class="live-dot" aria-hidden="true"></span><span style="flex:1;display:flex;flex-direction:column;gap:2px"><b style="color:#111">예배 실황</b><span class="muted" style="font-size:12px">주일 오전 9시 · 11시 예배를 유튜브로 함께 드려요</span></span>${ico('ext', '#2E7656', 16)}</a>
+          <span class="live-dot" aria-hidden="true"></span><span style="flex:1;display:flex;flex-direction:column;gap:2px"><b style="color:#111">실시간 예배 · 지난 실황</b><span class="muted" style="font-size:12px">주일 오전 9시 · 11시 예배를 유튜브로 함께 드려요</span></span>${ico('ext', '#2E7656', 16)}</a>
       </section>` : ''}
       <section style="display:flex;flex-direction:column;gap:12px"><h2>함께하는 교회 생활</h2>
         <div class="tiles">
@@ -249,8 +249,8 @@
   window.addEventListener('hashchange', route);
 
   const bust = '?d=' + new Date().toISOString().slice(0, 10);
-  Promise.all(['church', 'sermons'].map(n => fetch('data/' + n + '.json' + bust).then(r => r.ok ? r.json() : null).catch(() => null)))
-    .then(([c, s]) => { D.church = c; D.sermons = s || []; route(); });
+  Promise.all(['church', 'sermons', 'live'].map(n => fetch('data/' + n + '.json' + bust).then(r => r.ok ? r.json() : null).catch(() => null)))
+    .then(([c, s, l]) => { D.church = c; D.sermons = s || []; D.live = l || []; route(); });
   route();
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 })();
